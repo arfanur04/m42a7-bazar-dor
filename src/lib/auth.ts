@@ -3,9 +3,10 @@ import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "@better-auth/mongo-adapter";
 
 const client = new MongoClient(process.env.BETTER_AUTH_DB_URL as string);
-const db = client.db("bazar-dor-db");
+const db = client.db("m42a7-bazar-dor");
 
 export const auth = betterAuth({
+	baseURL: process.env.BETTER_AUTH_URL,
 	emailAndPassword: {
 		enabled: true,
 	},
@@ -22,5 +23,5 @@ export const auth = betterAuth({
 	database: mongodbAdapter(db, {
 		client,
 	}),
-	trustedOrigins: ["http://localhost:3000", "http://192.168.1.246:3000"],
+	trustedOrigins: ["http://192.168.1.246:3000"],
 });
