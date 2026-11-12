@@ -16,8 +16,8 @@ import {
 import { ArrowLeft, Eye, EyeSlash } from "@gravity-ui/icons";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import NextLink from "next/link";
 import SocialSignIn from "@/components/sign-in/SocialSignIn";
+import Link from "next/link";
 
 const SignUpPage = () => {
 	const router = useRouter();
@@ -52,14 +52,14 @@ const SignUpPage = () => {
 	return (
 		<section className="w-11/12 max-w-lg py-10 mx-auto sm:py-14">
 			{/* Heading */}
-			<div className="text-center">
+			<header className="text-center">
 				<h1 className="text-2xl font-black sm:text-3xl">
 					অ্যাকাউন্ট তৈরি করুন
 				</h1>
 				<p className="mt-2 text-sm text-gray-500 sm:text-base">
 					বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।
 				</p>
-			</div>
+			</header>
 
 			{/* Card */}
 			<Card className="mt-6 border border-gray-200 shadow-none rounded-2xl bg-white/70">
@@ -189,18 +189,18 @@ const SignUpPage = () => {
 
 					<p className="text-sm text-center">
 						অ্যাকাউন্ট আছে?{" "}
-						<NextLink
+						<Link
 							href="/sign-in"
 							className="font-medium text-green-700 hover:underline"
 						>
 							সাইন ইন করুন
-						</NextLink>
+						</Link>
 					</p>
 				</Card.Content>
 			</Card>
 
 			{/* Back home */}
-			<NextLink
+			<Link
 				href="/"
 				className="mt-6 flex items-center justify-center gap-1.5 text-sm text-gray-500 hover:text-gray-900"
 			>
@@ -209,7 +209,7 @@ const SignUpPage = () => {
 					height={16}
 				/>
 				হোম পেজে ফিরে যান
-			</NextLink>
+			</Link>
 		</section>
 	);
 };

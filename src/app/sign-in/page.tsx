@@ -14,16 +14,27 @@ import {
 	toast,
 } from "@heroui/react";
 import { ArrowLeft, Eye, EyeSlash } from "@gravity-ui/icons";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import NextLink from "next/link";
 import SocialSignIn from "@/components/sign-in/SocialSignIn";
-// import toast from "react-hot-toast";
+import Link from "next/link";
 
 const SignInPage = () => {
 	const router = useRouter();
 	const [isVisible, setIsVisible] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
+
+	const toastShown = useRef(false);
+
+	useEffect(() => {
+		const params = new URLSearchParams(window.location.search);
+
+		if (params.get("message") === "login-required" && !toastShown.current) {
+			toastShown.current = true;
+			toast.danger("এই পেজ দেখতে প্রথমে সাইন ইন করুন");
+			router.replace("/sign-in"); // remove ?message from the URL
+		}
+	}, [router]);
 
 	const onSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -146,18 +157,18 @@ const SignInPage = () => {
 
 					<p className="text-sm text-center">
 						অ্যাকাউন্ট নেই?{" "}
-						<NextLink
+						<Link
 							href="/sign-up"
 							className="font-medium text-green-700 hover:underline"
 						>
 							সাইন আপ করুন
-						</NextLink>
+						</Link>
 					</p>
 				</Card.Content>
 			</Card>
 
 			{/* Back home */}
-			<NextLink
+			<Link
 				href="/"
 				className="mt-6 flex items-center justify-center gap-1.5 text-sm text-gray-500 hover:text-gray-900"
 			>
@@ -166,7 +177,7 @@ const SignInPage = () => {
 					height={16}
 				/>
 				হোম পেজে ফিরে যান
-			</NextLink>
+			</Link>
 		</section>
 	);
 };
