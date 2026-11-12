@@ -4,6 +4,7 @@
 html {
 	scrollbar-gutter: stable;
 	scrollbar-width: thin;
+	scroll-behavior: smooth;
 }
 
 @utility bb {

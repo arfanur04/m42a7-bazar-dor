@@ -11,12 +11,14 @@ import {
 import logo from "@/assets/logo-icon.png";
 import { signOut, useSession } from "@/lib/auth-client";
 import { ghostButton, greenButton } from "@/buttons/Button.tsx";
+import { usePathname } from "next/navigation";
 
 const NavTop = () => {
 	const date = new Date().toLocaleDateString("bn-BD", {
 		dateStyle: "full",
 	});
 
+	const pathname = usePathname();
 	const sessionData = useSession();
 	const user = sessionData?.data?.user;
 	// if (user) {
@@ -24,10 +26,18 @@ const NavTop = () => {
 	// }
 
 	return (
-		<section className="flex items-center justify-between w-11/12 mx-auto min-h-16 max-w-7xl">
+		<section
+			id="nav-top"
+			className="flex items-center justify-between w-11/12 mx-auto min-h-16 max-w-7xl"
+		>
 			<Link
 				className="inline-flex items-center gap-2"
 				href="/"
+				onClick={() => {
+					if (pathname === "/") {
+						window.scrollTo({ top: 0, behavior: "smooth" });
+					}
+				}}
 			>
 				<Image
 					className="bg-green-200 p-1 rounded-lg"
