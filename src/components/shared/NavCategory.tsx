@@ -9,9 +9,9 @@ const NavCategory = ({ category }: { category: IFoodCategory }) => {
 	const pathname = usePathname();
 	const isActive = pathname === `/categories/${category.id}`;
 
-	if (isActive) {
-		console.log(`🚀 ~ pathname:`, pathname);
-	}
+	// if (isActive) {
+	// 	console.log(`🚀 ~ pathname:`, pathname);
+	// }
 
 	return (
 		<Link
