@@ -22,6 +22,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 	return (
 		<html
 			lang="en"
+			data-scroll-behavior="smooth"
 			className={`${notoSerifBengali.className}  h-full antialiased`}
 		>
 			<body className="min-h-full flex flex-col bg-[#f0f5f0]">

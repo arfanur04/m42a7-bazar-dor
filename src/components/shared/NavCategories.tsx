@@ -1,11 +1,9 @@
 import { IFoodCategory } from "@/types/types";
 import NavCategory from "./NavCategory";
+import { getData } from "@/lib/getData";
 
 const NavCategories = async () => {
-	const res = await fetch(
-		"https://openapi.programming-hero.com/api/bazardor/categories",
-	);
-	const categories: IFoodCategory[] = await res.json();
+	const categories = await getData<IFoodCategory[]>("/categories", []);
 
 	return (
 		<section className="w-11/12 mx-auto max-w-7xl py-2">

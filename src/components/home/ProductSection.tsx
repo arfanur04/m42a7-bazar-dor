@@ -1,12 +1,12 @@
 import { IFoodPrice } from "@/types/types";
 import ProductCard from "./ProductCard";
 
-type Props = {
+interface Props {
 	title: React.ReactNode;
 	subtitle?: string;
 	id?: string; // for the "সব পণ্য দেখুন" scroll link
 	products: IFoodPrice[];
-};
+}
 
 const ProductSection = ({ title, subtitle, id, products }: Props) => {
 	return (

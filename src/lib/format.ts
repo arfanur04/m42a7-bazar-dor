@@ -5,6 +5,17 @@
 export const toBnPrice = (value: number | string) =>
 	Number(value).toLocaleString("bn-BD");
 
+// 63.5 -> "৬৩.৫০"   62 -> "৬২"   (two decimals only when there is a fraction)
+export const toBnDecimal = (value: number | string) => {
+	const n = Number(value);
+	return Number.isInteger(n)
+		? n.toLocaleString("bn-BD")
+		: n.toLocaleString("bn-BD", {
+				minimumFractionDigits: 2,
+				maximumFractionDigits: 2,
+			});
+};
+
 // -2.9 -> "২.৯"  (always positive, one decimal; the ▲/▼ shows the direction)
 export const toBnPercent = (value: number | string) =>
 	Math.abs(Number(value)).toLocaleString("bn-BD", {
