@@ -1,6 +1,6 @@
 "use client";
 
-import { signUp } from "@/lib/auth-client";
+import { signOut, signUp } from "@/lib/auth-client";
 import {
 	Button,
 	Card,
@@ -36,6 +36,7 @@ const SignUpPage = () => {
 			email: data.email as string,
 			password: data.password as string,
 		});
+		await signOut();
 		setIsLoading(false);
 
 		if (error) {

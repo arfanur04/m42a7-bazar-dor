@@ -11,7 +11,7 @@ import {
 import logo from "@/assets/logo-icon.png";
 import { signOut, useSession } from "@/lib/auth-client";
 import { ghostButton, greenButton } from "@/buttons/Button.tsx";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const NavTop = () => {
 	const date = new Date().toLocaleDateString("bn-BD", {
@@ -20,10 +20,22 @@ const NavTop = () => {
 
 	const pathname = usePathname();
 	const sessionData = useSession();
+	const router = useRouter();
 	const user = sessionData?.data?.user;
 	// if (user) {
 	// 	console.log(`🚀 ~ user:`, user);
 	// }
+
+	const handleSignOut = async () => {
+		await signOut({
+			fetchOptions: {
+				onSuccess: () => {
+					// router.replace("/");
+					router.refresh();
+				},
+			},
+		});
+	};
 
 	return (
 		<section
@@ -112,7 +124,7 @@ const NavTop = () => {
 							<li>
 								<button
 									type="button"
-									onClick={() => signOut()}
+									onClick={() => handleSignOut()}
 									className="flex items-center w-full gap-2 px-3 py-2 text-sm text-left text-red-600 rounded-lg hover:bg-red-50"
 								>
 									<ArrowRightFromSquare
