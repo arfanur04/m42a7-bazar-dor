@@ -4,7 +4,7 @@ import NavTop from "./NavTop";
 
 const Navbar = () => {
 	return (
-		<nav className="sticky top-0 z-50 shadow-xs bg-white/80 backdrop-blur-sm">
+		<nav className="lg:sticky top-0 z-50 shadow-xs bg-white/80 backdrop-blur-sm">
 			<NavTop />
 			<hr className="border-t border-gray-100" />
 			<NavCategories />

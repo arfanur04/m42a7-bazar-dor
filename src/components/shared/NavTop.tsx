@@ -10,8 +10,8 @@ import {
 } from "@gravity-ui/icons";
 import logo from "@/assets/logo-icon.png";
 import { signOut, useSession } from "@/lib/auth-client";
-import { ghostButton, greenButton } from "@/buttons/Button.tsx";
 import { usePathname, useRouter } from "next/navigation";
+import { ghostButton, greenButton } from "@/buttons/Button";
 
 const NavTop = () => {
 	const date = new Date().toLocaleDateString("bn-BD", {
@@ -92,7 +92,12 @@ const NavTop = () => {
 							)}
 							<p className="text-sm font-bold ml-2">{user?.name}</p>
 						</summary>
-						<ul className="absolute right-0 z-10 p-2 mt-3 bg-white border border-gray-100 shadow-lg rounded-xl w-52">
+						<ul
+							onClick={(e) =>
+								e.currentTarget.closest("details")?.removeAttribute("open")
+							}
+							className="absolute right-0 z-10 p-2 mt-3 bg-white border border-gray-100 shadow-lg rounded-xl w-52"
+						>
 							<li className="px-3 py-2">
 								<p className="text-sm font-bold">{user?.name}</p>
 								<p className="text-xs text-gray-600">{user?.email}</p>

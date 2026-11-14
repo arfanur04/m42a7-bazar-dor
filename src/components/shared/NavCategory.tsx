@@ -1,6 +1,6 @@
 "use client";
 
-import { ghostButton, greenButton } from "@/buttons/Button.tsx";
+import { ghostButton, greenButton } from "@/buttons/Button";
 import { IFoodCategory } from "@/types/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
