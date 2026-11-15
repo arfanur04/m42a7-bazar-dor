@@ -4,7 +4,7 @@
 
 **BazarDor** is a website where you can check the prices of rice, lentils, oil, vegetables, fish, meat, eggs and spices. You can see which prices went up or down today, browse products by category, sort them by price, and open a product to compare prices across different markets.
 
-🔗 **Live Site:** [your-live-link-here](https://m42a7-bazar-dor.vercel.app)
+🔗 **Live Site:** [live-link-here](https://m42a7-bazar-dor.vercel.app)
 
 📦 **Repository:** [github.com/arfanur04/m42a7-bazar-dor](https://github.com/arfanur04/m42a7-bazar-dor)
 
