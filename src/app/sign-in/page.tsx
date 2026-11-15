@@ -166,6 +166,7 @@ const SignInPage = () => {
 						অ্যাকাউন্ট নেই?{" "}
 						<Link
 							href="/sign-up"
+							prefetch={false}
 							className="font-medium text-green-700 hover:underline"
 						>
 							সাইন আপ করুন

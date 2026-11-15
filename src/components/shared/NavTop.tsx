@@ -10,7 +10,7 @@ import {
 } from "@gravity-ui/icons";
 import logo from "@/assets/logo-icon.png";
 import { signOut, useSession } from "@/lib/auth-client";
-import { usePathname, useRouter } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
 import { ghostButton, greenButton } from "@/buttons/Button";
 
 const NavTop = () => {
@@ -30,8 +30,9 @@ const NavTop = () => {
 		await signOut({
 			fetchOptions: {
 				onSuccess: () => {
-					router.replace("/");
+					// router.replace("/");
 					router.refresh();
+					redirect("/");
 				},
 			},
 		});
@@ -105,6 +106,7 @@ const NavTop = () => {
 							<li>
 								<Link
 									href="/profile"
+									prefetch={false}
 									className="flex items-center gap-2 px-3 py-2 text-sm rounded-lg hover:bg-gray-100"
 								>
 									{user?.image ? (
@@ -145,6 +147,7 @@ const NavTop = () => {
 					<div>
 						<Link
 							href="/sign-in"
+							prefetch={false}
 							className={ghostButton}
 						>
 							<ArrowRightToSquare
@@ -155,6 +158,7 @@ const NavTop = () => {
 						</Link>
 						<Link
 							href="/sign-up"
+							prefetch={false}
 							className={greenButton}
 						>
 							<PersonPlus

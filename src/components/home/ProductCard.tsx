@@ -15,6 +15,7 @@ const ProductCard = ({ product }: { product: IFoodPrice }) => {
 	return (
 		<Link
 			href={`/product/${product.id}`}
+			prefetch={false}
 			className="block p-4 transition border border-gray-200 rounded-2xl bg-white/70 hover:shadow-md"
 		>
 			{/* Top: emoji + name + unit */}
