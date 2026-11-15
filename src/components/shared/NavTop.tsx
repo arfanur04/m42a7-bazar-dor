@@ -12,6 +12,7 @@ import logo from "@/assets/logo-icon.png";
 import { signOut, useSession } from "@/lib/auth-client";
 import { usePathname, useRouter } from "next/navigation";
 import { ghostButton, greenButton } from "@/buttons/Button";
+import { toast } from "@heroui/react";
 
 const NavTop = () => {
 	const date = new Date().toLocaleDateString("bn-BD", {
@@ -30,9 +31,8 @@ const NavTop = () => {
 		await signOut({
 			fetchOptions: {
 				onSuccess: () => {
-					router.push("/");
-					// router.refresh();
-					window.location.reload();
+					toast.success("সাইন আউট সফল হয়েছে");
+					router.refresh();
 				},
 			},
 		});

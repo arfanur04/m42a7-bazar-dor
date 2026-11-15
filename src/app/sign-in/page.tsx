@@ -42,17 +42,10 @@ const SignInPage = () => {
 		const data = Object.fromEntries(formData.entries());
 
 		setIsLoading(true);
-		const { error } = await signIn.email({
+		const { error, data: resData } = await signIn.email({
 			email: data.email as string,
 			password: data.password as string,
 			rememberMe: true,
-			fetchOptions: {
-				onSuccess: () => {
-					toast.success("সফলভাবে সাইন ইন হয়েছে");
-					router.push("/");
-					router.refresh();
-				},
-			},
 		});
 		setIsLoading(false);
 
@@ -60,10 +53,11 @@ const SignInPage = () => {
 			toast.danger(error.message || "সাইন ইন করা যায়নি, আবার চেষ্টা করুন");
 			return;
 		}
-
-		// toast.success("সফলভাবে সাইন ইন হয়েছে");
-		// router.push("/");
-		// router.refresh();
+		if (resData?.user?.email) {
+			toast.success("সফলভাবে সাইন ইন হয়েছে");
+			router.push("/");
+			router.refresh();
+		}
 	};
 
 	return (
