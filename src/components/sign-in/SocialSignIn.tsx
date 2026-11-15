@@ -8,6 +8,7 @@ const SocialSignIn = () => {
 		const { error } = await signIn.social({
 			provider,
 			callbackURL: "/",
+			// fetchOptions:
 		});
 
 		if (error) {
