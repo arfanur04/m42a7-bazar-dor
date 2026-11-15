@@ -10,7 +10,7 @@ import {
 } from "@gravity-ui/icons";
 import logo from "@/assets/logo-icon.png";
 import { signOut, useSession } from "@/lib/auth-client";
-import { redirect, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ghostButton, greenButton } from "@/buttons/Button";
 
 const NavTop = () => {
@@ -30,9 +30,9 @@ const NavTop = () => {
 		await signOut({
 			fetchOptions: {
 				onSuccess: () => {
-					// router.replace("/");
-					router.refresh();
-					redirect("/");
+					router.push("/");
+					// router.refresh();
+					window.location.reload();
 				},
 			},
 		});
