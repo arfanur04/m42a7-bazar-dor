@@ -8,14 +8,17 @@ const SocialSignIn = () => {
 		const { error } = await signIn.social({
 			provider,
 			callbackURL: "/",
-			// fetchOptions:
+			fetchOptions: {
+				onSuccess: () => {
+					toast.success("সফলভাবে সাইন ইন হয়েছে");
+				},
+			},
 		});
 
 		if (error) {
 			toast.danger(error.message || "সোশ্যাল লগইন করা যায়নি");
 			return;
 		}
-		toast.success("সফলভাবে সাইন ইন হয়েছে");
 	};
 
 	return (

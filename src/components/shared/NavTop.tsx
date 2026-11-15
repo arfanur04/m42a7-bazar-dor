@@ -30,7 +30,7 @@ const NavTop = () => {
 		await signOut({
 			fetchOptions: {
 				onSuccess: () => {
-					// router.replace("/");
+					router.replace("/");
 					router.refresh();
 				},
 			},

@@ -46,6 +46,13 @@ const SignInPage = () => {
 			email: data.email as string,
 			password: data.password as string,
 			rememberMe: true,
+			fetchOptions: {
+				onSuccess: () => {
+					toast.success("সফলভাবে সাইন ইন হয়েছে");
+					router.push("/");
+					router.refresh();
+				},
+			},
 		});
 		setIsLoading(false);
 
@@ -54,9 +61,9 @@ const SignInPage = () => {
 			return;
 		}
 
-		toast.success("সফলভাবে সাইন ইন হয়েছে");
-		router.push("/");
-		router.refresh();
+		// toast.success("সফলভাবে সাইন ইন হয়েছে");
+		// router.push("/");
+		// router.refresh();
 	};
 
 	return (
