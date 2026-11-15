@@ -32,7 +32,8 @@ const NavTop = () => {
 			fetchOptions: {
 				onSuccess: () => {
 					toast.success("সাইন আউট সফল হয়েছে");
-					router.refresh();
+					router.replace("/"); // leave the protected page
+					router.refresh(); // clear cached server data
 				},
 			},
 		});
